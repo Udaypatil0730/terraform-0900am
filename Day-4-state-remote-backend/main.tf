@@ -1,20 +1,14 @@
 resource "aws_instance" "name" {
-    ami = "ami-085ad6ae776d8f09c"
+    ami = "ami-0ddfba243cbee3768"
     instance_type = "t2.micro"
-    key_name = "ec2test"
-    availability_zone = "us-east-1a"
-    tags = {
-      Name = "dev"
+    key_name = "2301"
+    #availability_zone = "us-east-1a"
+    #tags = {
+    #Name = "dev"
     }
    
   
-}
 
-resource "aws_s3_bucket" "name" {
-  bucket = "multicloudnareshitveera"
-
-  
-}
 
 #Note:When multiple developers work on the same Terraform state file (terraform.tfstate), several problems can arise. These issues can cause conflicts, resource corruption, and deployment failures.
 #Merge Conflicts in terraform.tfstate
