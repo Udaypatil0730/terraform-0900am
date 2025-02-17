@@ -25,7 +25,7 @@ resource "aws_instance" "spyder" {
     instance_type = "t2.micro"
     key_name = "2301"
     tags = {
-    Name = "spyder"
+    Name = "spyderman"
     }
 
 }
