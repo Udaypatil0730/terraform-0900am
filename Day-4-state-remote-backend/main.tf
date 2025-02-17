@@ -14,7 +14,7 @@ resource "aws_instance" "prod" {
     instance_type = "t2.nano"
     key_name = "2301"
     tags = {
-    Name = "prod"
+    Name = "devlopment"
     }
    
   
