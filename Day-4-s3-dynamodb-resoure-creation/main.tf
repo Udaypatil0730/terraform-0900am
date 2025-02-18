@@ -1,11 +1,11 @@
-provider "aws" { 
-    region = "us-east-1"
+provider "aws" {
+  
 }
 
-# resource "aws_s3_bucket" "example" {
-#   bucket = "veeranareshitdevops"
+resource "aws_s3_bucket" "devopdup" {
+  bucket = "devopdup"
   
-# }
+}
 
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
   name = "terraform-state-lock-dynamo"
