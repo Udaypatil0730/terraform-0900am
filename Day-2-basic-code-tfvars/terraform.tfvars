@@ -1,5 +1,6 @@
-ami_id = "ami-085ad6ae776d8f09c"
+ami_id = "ami-0ddfba243cbee3768"
 type ="t2.micro"
-key = "ec2test"
+key = "2301"
+
 
 #terraform plan -var="type=t2.nano" passing the value while running time aslo
