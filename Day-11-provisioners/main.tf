@@ -84,9 +84,9 @@ resource "aws_instance" "server" {
     private_key = file("~/.ssh/id_rsa")  #private key path
     host        = self.public_ip
   }
-   local execution procee 
- provisioner "local-exec" {
-    command = "touch file500" #mysql -h -u user -p
+   #local execution procee 
+#provisioner "local-exec" {
+    #command = "touch file500" #mysql -h -u user -p
    
  }
   # File provisioner to copy a file from local to the remote EC2 instance
