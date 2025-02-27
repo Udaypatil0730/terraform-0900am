@@ -7,6 +7,9 @@ data "aws_subnet" "selected" {
     name   = "tag:Name"
     values = ["subnet-1"] # insert value here
   }
+
+
+
 }
 data "aws_security_groups" "selected" {
   filter {
@@ -14,6 +17,7 @@ data "aws_security_groups" "selected" {
     values = ["default"] # insert value here
   }
 }
+
 
 
 resource "aws_instance" "dev" {
