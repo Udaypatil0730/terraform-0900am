@@ -199,3 +199,58 @@ Q3. Have you faced a case where Terraform created a resource in the wrong order?
 
 Q4. Real-time example (story)
 👉 In my ABN AMRO Clearing Bank project, we had to launch EC2 instances in multiple environments (dev, stage, prod). I used for_each for naming and tagging differently per environment. We also used a data source to fetch the latest hardened AMI approved by security. In some cases, we explicitly used depends_on to ensure IAM roles and security groups were provisioned before the application servers came up.
+
+Day 3
+
+Terraform Cheat Sheet – Day 3 (State Management)
+🔑 Core Commands
+
+terraform state list → List all tracked resources
+
+terraform state show <res> → Show details of a resource
+
+terraform state rm <res> → Remove from state (keep in AWS)
+
+terraform state mv <old> <new> → Move resource (refactor)
+
+terraform import <res> <id> → Import existing infra
+
+🔑 Concepts
+
+State file = Source of truth for infra
+
+Remote backend (S3 + DynamoDB) = Centralized + locking
+
+State locking = Prevents concurrent changes
+
+Drift detection = Compare state vs. real infra
+
+Refactoring with state mv = Avoid recreation
+
+Removing with state rm = Terraform stops tracking
+
+🔑 Scenarios
+
+Import existing S3 bucket into Terraform (import)
+
+Move VPC resource into module (state mv)
+
+Remove IAM role from Terraform control (state rm)
+
+Detect manual changes via terraform plan (drift)
+
+Restore deleted state file from S3 versioning
+
+🔑 Keywords for Interview
+
+State drift
+
+State locking (DynamoDB)
+
+Remote backend
+
+Refactoring (state mv)
+
+Disaster recovery (S3 versioning)
+
+import vs. rm vs. mv
