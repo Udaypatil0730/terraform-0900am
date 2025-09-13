@@ -254,3 +254,85 @@ Refactoring (state mv)
 Disaster recovery (S3 versioning)
 
 import vs. rm vs. mv
+
+
+🌟 Terraform Interview Cheat Sheet (Day X)
+1. Terraform Functions
+
+Used to transform, manipulate, and compute values dynamically.
+
+Categories:
+
+String Functions → lower(), upper(), join(), split(), replace().
+
+Numeric Functions → max(), min(), ceil(), floor().
+
+Collection Functions → length(), contains(), merge(), toset().
+
+Date/Time → timestamp(), timeadd().
+
+Encoding → base64encode(), base64decode().
+
+✅ Scenario Q: “How do you dynamically pick AMI IDs for different regions?”
+👉 Use lookup() or map with var.region.
+
+2. Parent Module vs Child Module
+
+Parent Module → root level (where terraform apply is run).
+
+Child Module → reusable block of Terraform configs, called via module block.
+
+Communication →
+
+Parent → Child: variables.
+
+Child → Parent: outputs.
+
+✅ Scenario Q:
+
+“If you want to reuse VPC code across projects, how do you structure it?”
+👉 Create a VPC child module, call it from parent with different var.*.
+
+✅ Scenario Q:
+
+“How do parent and child share values?”
+👉 Parent passes input variables → child returns outputs.
+
+3. Dependencies in Terraform
+
+Terraform builds a DAG (Directed Acyclic Graph).
+
+Implicit Dependency → created automatically when referencing another resource.
+
+Example: EC2 instance referencing subnet ID.
+
+Explicit Dependency → enforced using depends_on.
+
+Example: CloudFront waiting for S3 bucket policy.
+
+✅ Scenario Q:
+
+“How do you ensure CloudFront distribution waits for an S3 bucket policy?”
+👉 Use depends_on.
+
+✅ Scenario Q:
+
+“If dependency is not set properly, what happens?”
+👉 Terraform may try wrong order → resource not found errors.
+
+4. Key Keywords for Quick Recall
+
+Functions = “Dynamic values, data transformations.”
+
+Parent vs Child Module = “Parent runs apply, child reusable. Vars in, Outputs out.”
+
+Dependencies = “DAG graph. Implicit via refs, Explicit via depends_on.”
+
+5. Storyline (How to Use in Interview)
+
+If asked in ABN AMRO Clearing Bank / Sanofi project:
+
+👉 “We had 10+ microservices in AWS. To avoid duplication, we created reusable child modules (for VPC, ECS, EKS, RDS). The parent module orchestrated them.
+Terraform resolved dependencies automatically through implicit references (like EC2 → subnet). For tricky cases like IAM policies and CloudFront, we used explicit depends_on.
+We also used Terraform functions like join(), merge(), and lookup() to keep the configuration dynamic and environment-agnostic.”
+
